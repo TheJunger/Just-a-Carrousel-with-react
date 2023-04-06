@@ -1,6 +1,3 @@
-import img1 from './Screenshot_22.png';
-import img2 from './Screenshot_23.png';
-import img3 from './Screenshot_24.png';
 import './App.css';
 import { useEffect, useState } from 'react';
 
@@ -9,6 +6,28 @@ function App() {
   const [isBtn1Active, setIsBtn1Active] = useState(false)
   const [isBtn2Active, setIsBtn2Active] = useState(true)
   const [isBtn3Active, setIsBtn3Active] = useState(false)
+
+  let carrouselHandel = (boton)=>{
+    const carrousel = document.querySelector('.carrouselContainer')
+    const btn1 = document.querySelector('.btn1')
+    const btn2 = document.querySelector('.btn2')
+    const btn3 = document.querySelector('.btn3')
+    btn1.style.backgroundColor = 'rgb(0, 255, 255, 0.3)'
+    btn2.style.backgroundColor = 'rgb(0, 255, 255, 0.3)'
+    btn3.style.backgroundColor = 'rgb(0, 255, 255, 0.3)'
+    if(boton == '1'){
+      carrousel.style.transform = 'translateX(52vw)'
+      btn1.style.backgroundColor = 'rgb(0, 255, 255, 1)'
+    }
+    else if(boton == '2'){
+      carrousel.style.transform = 'translateX(0vw)'
+      btn2.style.backgroundColor = 'rgb(0, 255, 255, 1)'
+    }
+    else if(boton == '3'){
+      carrousel.style.transform = 'translateX(-52vw)'
+      btn3.style.backgroundColor = 'rgb(0, 255, 255, 1)'
+    }
+  }
 
   useEffect(()=>{
     setInterval(() => {
@@ -32,49 +51,25 @@ function App() {
 
   useEffect(()=>{
     if(isBtn1Active == true){
-      console.log('reconocido ' + isBtn1Active)
       setIsBtn2Active(false)
       setIsBtn3Active(false)
-      const carrousel = document.querySelector('.carrouselContainer')
-      const btn1 = document.querySelector('.btn1')
-      const btn2 = document.querySelector('.btn2')
-      const btn3 = document.querySelector('.btn3')
-      carrousel.style.transform = 'translateX(52vw)'
-      btn1.style.backgroundColor = 'rgb(0, 255, 255, 1)'
-      btn2.style.backgroundColor = 'rgb(0, 255, 255, 0.3)'
-      btn3.style.backgroundColor = 'rgb(0, 255, 255, 0.3)'
+      carrouselHandel('1')
     }
   },[isBtn1Active])
 
   useEffect(()=>{
     if(isBtn2Active == true){
-      console.log('reconocido ' + isBtn2Active)
       setIsBtn1Active(false)
       setIsBtn3Active(false)
-      const carrousel = document.querySelector('.carrouselContainer')
-      const btn1 = document.querySelector('.btn1')
-      const btn2 = document.querySelector('.btn2')
-      const btn3 = document.querySelector('.btn3')
-      carrousel.style.transform = 'translateX(0vw)'
-      btn1.style.backgroundColor = 'rgb(0, 255, 255, 0.3)'
-      btn2.style.backgroundColor = 'rgb(0, 255, 255, 1)'
-      btn3.style.backgroundColor = 'rgb(0, 255, 255, 0.3)'
+      carrouselHandel('2')
     }
   },[isBtn2Active])
 
   useEffect(()=>{
     if(isBtn3Active == true){
-      console.log('reconocido ' + isBtn2Active)
       setIsBtn2Active(false)
       setIsBtn1Active(false)
-      const carrousel = document.querySelector('.carrouselContainer')
-      const btn1 = document.querySelector('.btn1')
-      const btn2 = document.querySelector('.btn2')
-      const btn3 = document.querySelector('.btn3')
-      carrousel.style.transform = 'translateX(-52vw)'
-      btn1.style.backgroundColor = 'rgb(0, 255, 255, 0.3)'
-      btn2.style.backgroundColor = 'rgb(0, 255, 255, 0.3)'
-      btn3.style.backgroundColor = 'rgb(0, 255, 255, 1)'
+      carrouselHandel('3')
     }
   },[isBtn3Active])
 
