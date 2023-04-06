@@ -47,7 +47,7 @@ function App() {
         setIsBtn1Active(true)
       }
     }, 10000);
-  })
+  },)
 
   useEffect(()=>{
     if(isBtn1Active == true){
